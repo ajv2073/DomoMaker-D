@@ -28,7 +28,7 @@ const redisClient = redis.createClient({
   url: process.env.REDISCLOUD_URL,
 });
 
-redisClient.on('error', err => console.log('Redis Client Error', err));
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
 redisClient.connect().then(() => {
   const app = express();
 
@@ -38,7 +38,7 @@ redisClient.connect().then(() => {
   app.use(compression());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  
+
   app.use(session({
     key: 'sessionid',
     store: new RedisStore({
@@ -48,19 +48,15 @@ redisClient.connect().then(() => {
     resave: false,
     saveUninitialized: false,
   }));
-  
+
   app.engine('handlebars', expressHandlebars.engine({ defaultLayout: '' }));
   app.set('view engine', 'handlebars');
   app.set('views', `${__dirname}/../views`);
-  
+
   router(app);
-  
+
   app.listen(port, (err) => {
     if (err) { throw err; }
     console.log(`Listening on port ${port}`);
   });
-  
-
-
 });
-
