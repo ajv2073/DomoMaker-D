@@ -1,7 +1,7 @@
 const helper = require('./helper.js');
 const React = require('react');
 const ReactDOM = require('react-dom');
-const { login } = require('../server/controllers/Account.js');
+// const { login } = require('../server/controllers/Account.js');
 
 const handleLogin = (e) => {
     e.preventDefault();

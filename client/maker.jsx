@@ -1,7 +1,7 @@
 const helper = require('./helper.js');
 const React = require('react');
 const ReactDOM = require('react-dom');
-const { addListener } = require('../server/models/Domo');
+// const { addListener } = require('../server/models/Domo');
 
 const handleDomo = (e) => {
     e.preventDefault();
@@ -23,8 +23,8 @@ const handleDomo = (e) => {
 const DomoForm = (props) => {
     return (
         <form id="domoForm"
-            name="domoForm"
             onSubmit={handleDomo}
+            name="domoForm"
             action="/maker"
             method="POST"
             className="domoForm"
@@ -44,7 +44,7 @@ const DomoList = (props) => {
             <div className="domoList">
                 <h3 className="emptyDomo">No Domos Yet!</h3>
             </div>
-        )
+        );
     }
 
     const domoNodes = props.domos.map(domo => {
