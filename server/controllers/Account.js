@@ -8,6 +8,8 @@ const loginPage = (req, res) => res.render('login');
 //     return res.render('signup');
 // };
 
+const contentPage = (req, res) => res.render('content');
+
 const logout = (req, res) => {
   req.session.destroy();
   return res.redirect('/');
@@ -66,4 +68,5 @@ module.exports = {
   login,
   logout,
   signup,
+  contentPage,
 };
